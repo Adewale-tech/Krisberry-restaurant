@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krisberry Pizza Planet | Abuja's Finest Artisan Kitchen</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FDB813',
+                        'primary-hover': '#eeb010',
+                        secondary: '#CC5500',
+                        tangerine: '#f97316',
+                        gold: '#facc15',
+                        chocolate: '#2A1408',
+                        'chocolate-light': '#4A2A18',
+                        'background-soft': '#FDFBF7',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    borderRadius: {
+                        '3xl': '24px',
+                        '4xl': '40px',
+                    },
+                    boxShadow: {
+                        'premium': '0 25px 50px -12px rgba(42, 20, 8, 0.08)',
+                        'float': '0 10px 30px -5px rgba(42, 20, 8, 0.15)',
+                    },
+                    keyframes: {
+                        'fade-in': { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        'scale-in': { '0%': { opacity: '0', transform: 'scale(0.98)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+                        'slide-up': { '0%': { transform: 'translate(-50%, 100%)' }, '100%': { opacity: '1', transform: 'translate(-50%, 0)' } },
+                        'float': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        'marquee': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scale-in': 'scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'slide-up': 'slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'marquee': 'marquee 80s linear infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+            background-color: #FDFBF7;
+            background-image: radial-gradient(#FDB81311 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .dark body {
+            background-color: #2A1408;
+            background-image: radial-gradient(#FDB81308 0.5px, transparent 0.5px);
+        }
+        .glass {
+            background: rgba(253, 251, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .dark .glass {
+            background: rgba(42, 20, 8, 0.8);
+            border-bottom: 1px solid rgba(253, 251, 247, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #2A1408 0%, #CC5500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #FDB813 0%, #FFFFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A140822;
+            border-radius: 20px;
+        }
+        .dark ::webkit-scrollbar-thumb {
+            background: #FDB81322;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FDB813;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body class="text-chocolate dark:text-background-soft selection:bg-primary selection:text-chocolate antialiased overflow-x-hidden">
+    <div id="root"></div>
+</body>
+</html>

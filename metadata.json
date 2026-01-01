@@ -1,0 +1,7 @@
+{
+  "name": "Krisberry Pizza Planet",
+  "description": "A high-end, high-performance food ordering platform for Krisberry Pizza Planet featuring real-time branch status, AI-powered menu recommendations, and an integrated management portal.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
