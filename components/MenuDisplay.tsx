@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MenuItem, Branch, CartItem } from '../types';
 import { getPizzaRecommendation } from '../services/geminiService';
@@ -9,9 +8,10 @@ interface MenuDisplayProps {
   branch: Branch | null;
   onCheckout: () => void;
   cart: CartItem[];
+  onSelectBranch: () => void;
 }
 
-const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCheckout, cart }) => {
+const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCheckout, cart, onSelectBranch }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiRec, setAiRec] = useState<{name: string, description: string, reasoning: string} | null>(null);
@@ -32,14 +32,44 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCh
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16">
+      {/* Branch Selection Alert Banner */}
+      {!branch && (
+        <div className="mb-12 animate-fade-in">
+          <div className="bg-gradient-to-r from-secondary/10 to-primary/10 border border-secondary/20 rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+            <div className="flex items-center gap-5">
+              <div className="size-14 bg-secondary text-white rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="material-symbols-outlined text-2xl font-black">location_on</span>
+              </div>
+              <div>
+                <h4 className="text-xl font-black text-chocolate dark:text-white leading-tight">Kitchen Selection Required</h4>
+                <p className="text-chocolate/60 dark:text-white/60 text-sm font-medium">To provide accurate wait times and prepare your meal, please choose a local branch first.</p>
+              </div>
+            </div>
+            <button 
+              onClick={onSelectBranch}
+              className="px-10 py-4 bg-chocolate dark:bg-primary text-primary dark:text-chocolate font-black rounded-2xl shadow-xl hover:scale-[1.05] transition-all flex items-center gap-3 whitespace-nowrap"
+            >
+              Choose Branch
+              <span className="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Menu Header */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20">
         <div className="animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-widest mb-4">
+          <div className="flex items-center gap-3 text-secondary font-black text-[11px] uppercase tracking-widest mb-4">
             <span className="material-symbols-outlined text-lg">restaurant_menu</span>
-            Dining from {branch?.name || 'Abuja'}
+            {branch ? (
+              <span className="flex items-center gap-2">
+                Ordering from <span className="text-chocolate dark:text-white underline underline-offset-4">{branch.name}</span>
+              </span>
+            ) : (
+              <span>Browsing Global Menu</span>
+            )}
           </div>
-          <h2 className="text-5xl md:text-6xl font-serif text-chocolate leading-tight tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-serif text-chocolate dark:text-background-soft leading-tight tracking-tight">
             Curated <span className="italic text-primary">Intercontinental</span> Selection
           </h2>
         </div>
@@ -50,8 +80,8 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCh
               onClick={() => setActiveCategory(cat)}
               className={`px-8 py-3 rounded-2xl text-[11px] font-extrabold uppercase tracking-widest transition-all whitespace-nowrap border-2 ${
                 activeCategory === cat 
-                ? 'bg-chocolate border-chocolate text-white shadow-xl' 
-                : 'bg-white border-chocolate/5 text-chocolate/50 hover:border-primary/50 hover:text-chocolate'
+                ? 'bg-chocolate dark:bg-primary border-chocolate dark:border-primary text-white dark:text-chocolate shadow-xl' 
+                : 'bg-white dark:bg-chocolate-light border-chocolate/5 dark:border-white/10 text-chocolate/50 dark:text-background-soft/40 hover:border-primary/50 hover:text-chocolate dark:hover:text-background-soft'
               }`}
             >
               {cat}
@@ -60,7 +90,7 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCh
         </div>
       </div>
 
-      {/* AI Flavor Matcher - Sleeker Design */}
+      {/* AI Flavor Matcher */}
       <div className="mb-24 relative group animate-fade-in">
         <div className="absolute inset-0 bg-primary/20 blur-[100px] opacity-30 -z-10 group-hover:opacity-50 transition-opacity" />
         <div className="bg-chocolate rounded-[48px] p-10 md:p-16 text-white overflow-hidden relative shadow-2xl border border-white/5">
@@ -145,23 +175,25 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCh
                   onClick={() => addToCart(item)}
                   className="w-full h-14 bg-white text-chocolate font-black rounded-2xl hover:bg-primary transition-all flex items-center justify-center gap-2 shadow-2xl"
                 >
-                  Quick Add
-                  <span className="material-symbols-outlined text-lg">add_circle</span>
+                  {branch ? 'Quick Add' : 'Select Branch'}
+                  <span className="material-symbols-outlined text-lg">
+                    {branch ? 'add_circle' : 'location_on'}
+                  </span>
                 </button>
               </div>
             </div>
 
             <div className="px-4">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-serif font-bold text-chocolate">{item.name}</h3>
+                <h3 className="text-2xl font-serif font-bold text-chocolate dark:text-white">{item.name}</h3>
                 <span className="text-xl font-black text-secondary">₦{item.price.toLocaleString()}</span>
               </div>
-              <p className="text-chocolate/50 font-medium leading-relaxed mb-6 text-sm">{item.description}</p>
+              <p className="text-chocolate/50 dark:text-background-soft/50 font-medium leading-relaxed mb-6 text-sm">{item.description}</p>
               <button 
                 onClick={() => addToCart(item)}
-                className="lg:hidden w-full h-12 bg-chocolate text-white rounded-xl font-bold flex items-center justify-center gap-2"
+                className="lg:hidden w-full h-12 bg-chocolate dark:bg-primary text-white dark:text-chocolate rounded-xl font-bold flex items-center justify-center gap-2"
               >
-                Add to Cart
+                {branch ? 'Add to Cart' : 'Choose Kitchen'}
               </button>
             </div>
           </div>
@@ -171,7 +203,7 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ menu, addToCart, branch, onCh
       {/* Persistent Mobile-Ready Cart Notification */}
       {cart.length > 0 && (
         <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-[92%] max-w-lg z-[60] animate-slide-up">
-          <div className="dark-glass text-white rounded-[32px] p-6 flex items-center justify-between shadow-2xl border border-white/10">
+          <div className="glass text-chocolate dark:text-white rounded-[32px] p-6 flex items-center justify-between shadow-2xl border border-chocolate/5 dark:border-white/10">
             <div className="flex items-center gap-5">
               <div className="size-14 bg-primary rounded-2xl flex items-center justify-center text-chocolate font-black text-xl shadow-inner">
                 {cart.reduce((a, c) => a + c.quantity, 0)}

@@ -35,6 +35,16 @@ const App: React.FC = () => {
   }, [currentRoute]);
 
   const addToCart = (item: MenuItem) => {
+    if (!selectedBranch) {
+      // Redirect to home and scroll to locations if no branch is selected
+      setCurrentRoute(AppRoute.HOME);
+      setTimeout(() => {
+        const loc = document.getElementById('locations');
+        loc?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+      return;
+    }
+
     setCart(prev => {
       const existing = prev.find(i => i.id === item.id);
       if (existing) {
@@ -141,14 +151,12 @@ const App: React.FC = () => {
                         key={idx} 
                         className={`${vibe.size} shrink-0 relative rounded-[35px] md:rounded-[60px] overflow-hidden group shadow-premium border-2 md:border-4 border-chocolate/5 bg-background-soft dark:bg-chocolate transition-all duration-700 hover:border-primary/40`}
                       >
-                        {/* Ensure image has a clear background and fills container */}
                         <div className="absolute inset-0 bg-chocolate/10 z-0" />
                         <img 
                           src={vibe.img} 
                           className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 z-10" 
                           alt={vibe.title} 
                           onError={(e) => {
-                            // Fallback if Unsplash fails temporarily
                             (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=1200';
                           }}
                         />
@@ -172,6 +180,12 @@ const App: React.FC = () => {
             branch={selectedBranch}
             onCheckout={() => setCurrentRoute(AppRoute.CHECKOUT)}
             cart={cart}
+            onSelectBranch={() => {
+              setCurrentRoute(AppRoute.HOME);
+              setTimeout(() => {
+                document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
           />
         )}
 
