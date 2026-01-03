@@ -52,7 +52,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'Our signature 48-hour slow-fermented honey-sourdough base, adorned with hand-picked wild porcini mushrooms, delicate shavings of authentic black winter truffle, and creamy fior di latte mozzarella, finished with a drizzle of cold-pressed extra virgin olive oil.',
     price: 24500,
     category: 'Pizza',
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     isBestseller: true,
     tags: ['Signature', 'Organic']
@@ -63,7 +63,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'A masterful fusion of traditional northern Nigerian heritage and artisan pizza craft. Featuring tender strips of prime grass-fed beef encrusted in a multi-generational secret Suya spice blend, fresh bird\'s eye chilies, and a zest of indigenous yaji, over a San Marzano tomato reduction.',
     price: 21000,
     category: 'Pizza',
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     tags: ['Spicy']
   },
@@ -73,7 +73,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'Triple-crisped organic wings glazed in a house-made reduction of fiery Szechuan peppercorns and wild forest honey. Garnished with fire-roasted sesame seeds and micro-scallions for a sophisticated balance of heat and nectar.',
     price: 15500,
     category: 'Chinese',
-    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     tags: ['Shared']
   },
@@ -83,7 +83,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'Succulent Atlantic lobster tail, wok-seared to precision with aromatic ginger root and spring scallions, deglazed with a vintage 10-year aged artisan soy sauce for a profound depth of umami.',
     price: 38000,
     category: 'Chinese',
-    image: 'https://images.unsplash.com/photo-1551326844-4df70f78d0e9?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1559715544-33be62554de3?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     tags: ['Premium']
   },
@@ -93,7 +93,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'Al dente artisan durum wheat penne tossed with charcoal-grilled jumbo tiger prawns. Folded into a luxurious emulsion of sun-ripened tropical mango and a whisper of habanero heat, finished with fresh torn basil.',
     price: 22500,
     category: 'Organic',
-    image: 'https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     tags: ['Fusion']
   },
@@ -103,7 +103,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: '12-hour slow-braised Atlas mountain-spiced lamb, pulled to tenderness and layered with a piquant house-crafted harissa-infused aioli and zesty quick-pickled slaw on toasted artisan honey-brioche buns.',
     price: 16500,
     category: 'Bakery',
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     tags: ['Appetizer']
   },
@@ -113,7 +113,7 @@ export const INITIAL_MENU: MenuItem[] = [
     description: 'The definitive Abuja classic. Long-grain parboiled rice authentically infused with the essence of hardwood smoke. Served alongside a herb-crusted grilled turkey breast and caramelized organic dodo, representing the soul of our kitchen.',
     price: 18500,
     category: 'Organic',
-    image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&q=80&w=600',
+    image: 'https://images.unsplash.com/photo-1626777552726-4a6b547b4de5?auto=format&fit=crop&q=80&w=800',
     isAvailable: true,
     isBestseller: true
   }
